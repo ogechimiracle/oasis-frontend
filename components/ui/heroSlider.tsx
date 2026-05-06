@@ -33,7 +33,7 @@ export default function HeroSwiper() {
     ]
 
     return (
-        <div>
+        <div className="relative w-full overflow-hidden">
             <Swiper
                 modules={[Navigation, Autoplay]}
                 navigation={{

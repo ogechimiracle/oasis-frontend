@@ -45,7 +45,7 @@ function Hero(){
 
 
 
-                <div className="relative lg:max-w-[50%] mt-13 lg:mt-5">
+                <div className="relative w-full lg:w-1/2 mt-13 lg:mt-5 min-h-[300px] lg:min-h-[500px]" data-aos="fade-left">
                    <HeroSwiper/>
                 </div>
 
