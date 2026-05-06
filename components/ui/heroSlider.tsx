@@ -47,7 +47,7 @@ export default function HeroSwiper() {
             >
                 {slides.map((slide, index) => (
                     <SwiperSlide key={index}>
-                        <div className="w-full lg:h-120 h-80 relative">
+                        <div className="w-full lg:h-[480px] h-80 relative">
                             <Image
                                 src={slide.img}
                                 alt="swiper"
