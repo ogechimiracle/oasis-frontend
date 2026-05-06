@@ -5,7 +5,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { useState } from "react";
 import { Transition } from "@headlessui/react";
-import SlideText from "./sliderText";
 import Image from "next/image";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css/navigation";
