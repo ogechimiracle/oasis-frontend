@@ -37,7 +37,7 @@ export default function CourseSwiper({ courses }: CourseSwiperProps) {
         <SwiperSlide key={index}>
           <div className="bg-white rounded-2xl shadow-md overflow-hidden">
             <img
-              src={getCourseImageUrl(course.thumbnail)}
+              src={course.thumbnail}
               alt={course.title}
               className="w-full h-52 object-cover"
             />

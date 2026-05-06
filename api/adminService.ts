@@ -50,6 +50,11 @@ export const getArchivedCourse = async()=>{
     return res.data
 }
 
+export const updateCourse=async(id:string, data:any)=>{
+    const res = await api.put(`/admin/updateCourse/${id}`,data)
+    return res.data
+}
+
 export const getMessages = async()=>{
     const res = await api.get("/admin/contacts")
     return res.data

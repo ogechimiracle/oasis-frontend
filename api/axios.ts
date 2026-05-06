@@ -2,8 +2,8 @@ import axios from "axios"
 
 
 const api = axios.create({
-    // baseURL: "http://localhost:5000/api",
-    baseURL: "https://oasis-backend-hqcx.onrender.com/api",
+    //  baseURL: "http://localhost:5000/api",
+     baseURL: "https://oasis-backend-hqcx.onrender.com/api", 
 });
 
 // attached the jwt in every request sends from frontend

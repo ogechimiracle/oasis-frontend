@@ -9,6 +9,13 @@ import { useState, useEffect, useMemo } from "react";
 import { Sheet,SheetContent,SheetHeader,SheetTitle,SheetDescription,} from "@/components/ui/sheet";
 import { useMediaQuery } from "usehooks-ts";
 import { filterCourses } from "@/lib/helper";
+import { useAuth } from "@/context/authContext";
+import toast, { Toast, Toaster } from "react-hot-toast";
+import { useRouter } from "next/navigation";
+
+
+
+
 
 
 
@@ -22,6 +29,9 @@ function Courses(){
     const [search, setSearch] = useState<string>("")
     const [level, setLevel] = useState<string>("")
     const [category, setCategory] = useState<string>("")
+
+    const { user} = useAuth()
+    const router = useRouter()
 
     const isMobile = useMediaQuery("(max-width: 768px)");
 
@@ -66,6 +76,15 @@ function Courses(){
     const filteredCourses = useMemo(() => {
         return filterCourses(courses, { search, category, level });
         }, [courses, search, category, level]);
+
+        
+    const handleEnroll = (item:any)=>{
+        if(!user){
+            toast("please sign in to register for course")
+            router.push("/auth/")
+            return 
+        }
+    }
 
     
 
@@ -121,7 +140,7 @@ function Courses(){
                                     price={formatCurrency(course.cost)}
                                     isPaid={course.paid}
                                     description={truncateText(course.briefDefinition, 100)}
-                                    image={getCourseImageUrl(course.thumbnail)}
+                                    image={course.thumbnail}
                                     onGetCourseById={() => handleGetCourseById(course.id)}
                                 />
                             ))}
@@ -138,12 +157,13 @@ function Courses(){
 
 
             <Sheet open={openSheet} onOpenChange={() => setOpenSheet(!openSheet)}>
-                <SheetContent side={isMobile ? "bottom" : "right"} className={isMobile ? "max-h-[80vh] overflow-y-scroll" : " overflow-y-scroll"}>
+                <SheetContent side={isMobile ? "bottom" : "right"}  className={` overflow-y-scroll ${isMobile ? "max-h-[80vh]" : "lg:w-[40vw]"}
+                `}>
                     {selectedCourse && (
                     <>
                         <SheetHeader>
                         <div>
-                            <img src={getCourseImageUrl(selectedCourse.thumbnail)} alt={selectedCourse.title} className="w-full h-40 object-cover rounded-lg"/>
+                            <img src={selectedCourse.thumbnail} alt={selectedCourse.title} className="w-full h-40 object-cover rounded-lg"/>
                         </div>
                         <SheetTitle>{selectedCourse.title}</SheetTitle>
                         <SheetDescription>
@@ -218,7 +238,7 @@ function Courses(){
 
 
                                 <div>
-                                    <button className="bg-myprimaryColor text-black font-semibold rounded-lg px-5 py-3">Enroll Now</button>
+                                    <button className="bg-myprimaryColor text-black font-semibold rounded-lg px-5 py-3" onClick={()=>handleEnroll(selectedCourse)}>Enroll Now</button>
                                 </div>
 
                             </div>

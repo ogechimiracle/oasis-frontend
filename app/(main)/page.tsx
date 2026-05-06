@@ -108,18 +108,18 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-8 mt-10 py-2 w-full" data-aos="fade-up" data-aos-delay="200">
 
             <div className="w-full h-100.75 shadow-sm bg-white rounded-2xl relative" data-aos="fade-right">
-              <Image src="/images/smile.png" alt="Smile" width={400} height={300} className="object-cover w-full h-full rounded-2xl" />
+              <Image src="/images/about/ab5.jpeg" alt="Smile" width={400} height={300} className="object-cover w-full h-full rounded-2xl" />
               <div className="absolute inset-0 h-full w-full flex flex-col items-center justify-center space-y-4 bg-black/30 rounded-2xl">
 
               <h1 className=" uppercase font-semibold text-white text-2xl">For Instructors</h1>
  
-              <button className="px-8 py-4 rounded-full text-white border-[1.5px] border-white font-poppins cursor-pointer hover:translate-x-2.5 transition-all duration-150 ease-in hover:border-myheaderColor hover:text-black">Start a class today</button>
+              <button className="px-8 py-4 rounded-full text-white border-[1.5px] border-white font-poppins cursor-pointer hover:bg-black hover:translate-x-2.5 transition-all duration-150 ease-in hover:border-myheaderColor hover:text-white">Start a class today</button>
 
               </div>
             </div>
 
             <div className="w-full h-100.75 shadow-sm bg-white rounded-lg relative" data-aos="fade-left">
-               <Image src="/images/funs.png" alt="students smiling" width={400} height={300} className="object-cover w-full h-full rounded-2xl" />
+               <Image src="/images/about/ab6.jpeg" alt="students smiling" width={400} height={300} className="object-cover w-full h-full rounded-2xl" />
 
                <div className="absolute inset-0 h-full w-full flex flex-col items-center justify-center space-y-4 bg-black/30 rounded-2xl">
 

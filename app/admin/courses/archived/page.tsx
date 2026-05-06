@@ -31,7 +31,7 @@ function Archived(){
 
     return(
         <div>
-            <p className="text-xl text-black font-semibold">All Pending Course</p>
+            <p className="text-xl text-black font-semibold">All Archived Course</p>
 
             <div className="mt-8">
 

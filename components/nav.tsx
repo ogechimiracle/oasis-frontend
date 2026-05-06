@@ -38,7 +38,7 @@ function Nav() {
             <div className="hidden lg:block">
                 <ul className="flex items-center gap-x-10">
                     {oasisNavLinks.map((link, index) => (
-                        <div key={index} className="flex flex-col items-center gap-y-[0.95px]">
+                        <div key={index} className={`flex flex-col items-center gap-y-[0.95px] ${path ==='/'?"text-white":"text-black"} `}>
                             <Link href={link.path} className={`text-md font-poppins font-regular ${path === link.path ? 'text-myprimaryColor' : ' hover:text-myprimaryColor'}`}>{link.name}
                             </Link>
                             {path === link.path && 

@@ -5,7 +5,7 @@ import {Table,TableBody,TableCaption,TableCell,TableFooter,TableHead,TableHeader
 import { useState, useEffect } from "react"
 import Modal from "@/components/ui/modal"
 import { useForm } from "@/lib/useForm"
-import { activateCourse, addCourse, delCourse, getCategory, getCourse } from "@/api/adminService"
+import { activateCourse, addCourse, delCourse, getCategory, getCourse, updateCourse } from "@/api/adminService"
 import Image from "next/image"
 import { courseValidation } from "@/validation/course.schema"
 import { convertToArray, formatCustomDateTime } from "@/lib/utils"
@@ -25,6 +25,8 @@ function Courses(){
     const [imagePreview, setImagePreview] =  useState<string | null>(null)
     const [error, setError] = useState<any>([])
     const [loading, setLoading] = useState<boolean>(false)
+    const [mode, setMode] = useState<"create" | "edit">("create");
+    const [editingCourse, setEditingCourse] = useState<any>(null);  
     
 
     const courseForm = useForm({
@@ -157,12 +159,19 @@ function Courses(){
                 formData.append("thumbnail", thumbnail);
             }
 
-            const result = await addCourse(formData)
+            let apiRes;
+            if (mode === "create") {
+                apiRes = await addCourse(formData);
+            } else {
+                apiRes = await updateCourse(editingCourse.id, formData);
+            }
 
-            if(result.success){
-                toast.success(result.message)
+
+
+            if(apiRes.success){
+                toast.success(apiRes.message)
                 setOpenModal(false)
-                setCourse(result.data)
+                setCourse(apiRes.data)
                 courseForm.resetForm()
                 setRefresh(!refresh)
             }
@@ -176,6 +185,39 @@ function Courses(){
         }
 
     }
+
+
+    const handleEdit = (item: any) => {
+        setMode("edit");
+        setEditingCourse(item);
+        setOpenModal(true);
+
+        courseForm.setFormData({
+            category: item.category,
+            title: item.title,
+            slug: item.slug,
+            briefDefinition: item.briefDefinition,
+            prerequisite: item.prerequisite,
+            keyAreas: item.keyAreas?.join(", "),
+            outcomes: item.outcomes?.join(", "),
+            jobRoles: item.jobRoles?.join(", "),
+            industries: item.industries?.join(", "),
+            duration: item.duration,
+            cost: item.cost,
+            paid: item.paid,
+            thumbnail: null,
+            level: item.level,
+        });
+
+        setImagePreview(item.thumbnail);
+    };
+
+    const closeModal = () => {
+        setOpenModal(false);
+        setMode("create");
+        setEditingCourse(null);
+        courseForm.resetForm();
+    };
 
     return(
         <div>
@@ -218,7 +260,7 @@ function Courses(){
                                             <TableCell>{item.level}</TableCell>
                                             <TableCell className="space-x-3">
                                                 <button className="rounded-lg bg-red-500 text-white text-xs px-4 py-2" onClick={()=>handleDeleteCourse(item.id)}>Delete</button>
-                                                <button className="bg-mygreenColor px-4 py-2 rounded-lg text-xs text-white">Edit</button>
+                                                <button className="bg-mygreenColor px-4 py-2 rounded-lg text-xs text-white" onClick={()=>handleEdit(item)}>Edit</button>
                                                 {item.status ==="published" ? (
                                                     <span className="px-2 py-1.5 rounded-full bg-myprimaryColor text-black text-xs">Published</span>
                                                 ): (
@@ -248,7 +290,7 @@ function Courses(){
             </div>
 
 
-            <Modal title="Add Caourse" isOpen={openModal} onClose={()=>setOpenModal(!openModal)} widthClass="w-full max-w-4xl">
+            <Modal title={mode === "create" ? "Add Course" : "Edit Course"} isOpen={openModal} onClose={closeModal} widthClass="w-full max-w-4xl">
                 <div>
                     <form onSubmit={handleSubmitCourse} encType="multipart/form-data" className="space-y-4 relative">
 
@@ -356,7 +398,7 @@ function Courses(){
                         </div>
 
 
-                        <div  className="lg:col-span-2 h-20 bg-gray-100 flex flex-col lg:flex-row items-center justify-center gap-x-8">
+                        <div  className="lg:col-span-2 h-40 bg-gray-100 flex flex-col lg:flex-row items-center justify-center gap-x-8">
                             <div className="px-5 py-3 rounded-lg bg-myheroColor text-white">
                                 <input type="file" name="thumbnail"   onChange={courseForm.handleFileChange} />
                             </div>
@@ -373,7 +415,7 @@ function Courses(){
                                 {loading ? <div className="inline-flex items-center gap-x-2">
                                     <span>Please wait</span>
                                     <Spinner/>
-                                </div> : "Save and Continue"}
+                                </div> : mode==="create"?"Save and Continue":"Update Course"}
                             </button>
                         </div>
                      
