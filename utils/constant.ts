@@ -15,8 +15,8 @@ export const oasisNavLinks = [
     {name: "Courses", path: "/courses"},
     {name: "About", path: "/about"},    
     {name: "Contact", path: "/contact"},
-    {name: "Blog", path: "/blog"},
-    {name: "Resources", path: "/resources"},    
+    {name: "Blog", path: ""},
+    {name: "Resources", path: ""},    
 ]
 
 
