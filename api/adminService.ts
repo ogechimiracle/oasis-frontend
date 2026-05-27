@@ -59,3 +59,8 @@ export const getMessages = async()=>{
     const res = await api.get("/admin/contacts")
     return res.data
 }
+
+export const  getEnrollments = async()=>{
+    const res = await api.get("/admin/enrollmentStats")
+    return res.data
+}

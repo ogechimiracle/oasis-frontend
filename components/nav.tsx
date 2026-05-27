@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import {RiMenu3Fill, RiCloseFill, RiUser2Fill} from "react-icons/ri"
 import { MdKeyboardArrowDown, MdOutlineLogout } from "react-icons/md";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAuth } from "@/context/authContext";
 
 
@@ -23,8 +23,26 @@ function Nav() {
         logout()
     }
 
+    useEffect(()=>{
+        // stick nav to top on scroll
+        const handleScroll = () => {
+            const navElement = document.querySelector("nav");
+            if (window.scrollY > 0) {
+                navElement?.classList.add("sticky", "top-0", "shadow-md");
+            } else {
+                navElement?.classList.remove("sticky", "top-0", "shadow-md");
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    },[])
+
     return (  
-       <nav className={`relative h-15 ${path === "/" ? "bg-myheroColor" : "bg-white"} `} >
+       <nav className={`relative h-15 z-40 ${path === "/" ? "bg-myheroColor" : "bg-white"} `} >
 
         <div className={`absolute inset-0 py-4  w-full ${path === "/" ? "bg-black/15" : ""}`}>
 
@@ -122,6 +140,9 @@ function Nav() {
             >
                 <div className="px-8 py-5 mt-5">
                 <ul className="flex flex-col items-center gap-y-4">
+                    {user &&(
+                        <Link href="">Dashboard</Link>
+                    )}
                     {oasisNavLinks.map((link, index) => (
                     <li key={index}>
                         <Link
@@ -135,12 +156,24 @@ function Nav() {
                         )}
                         </Link>
                     </li>
+                   
                     ))}
+
+                    {user && (
+                        <Link href="">Profile</Link>
+                    )}
                 </ul>
-                <div className="flex items-center justify-between w-full mt-5">
-                    <Link href="/auth/" className="px-6 py-2 rounded-full text-sm bg-white shadow-sm text-black cursor-pointer">Login</Link>
-                    <Link href="/auth/" className="px-6 py-2 rounded-full text-sm bg-myprimaryColor shadow-sm text-black cursor-pointer font-poppins ">Sign Up</Link>
-                </div>
+                {!user ?(
+                    <div className="flex items-center justify-between w-full mt-5">
+                        <Link href="/auth/" className="px-6 py-2 rounded-full text-sm bg-white shadow-sm text-black cursor-pointer">Login</Link>
+                        <Link href="/auth/" className="px-6 py-2 rounded-full text-sm bg-myprimaryColor shadow-sm text-black cursor-pointer font-poppins ">Sign Up</Link>
+                    </div>
+                ):(
+                    <button onClick={handleLogout} className=" px-4 py-2.5 cursor-pointer hover:bg-myprimaryColor text-black bg-myprimaryColor w-full inline-flex items-center justify-center gap-x-3 mt-4">
+                        <span>Sign Out</span>
+                        <MdOutlineLogout />
+                    </button>
+                )}
                 </div>
 
                 {/* close button */}

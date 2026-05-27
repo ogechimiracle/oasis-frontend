@@ -12,6 +12,8 @@ import { filterCourses } from "@/lib/helper";
 import { useAuth } from "@/context/authContext";
 import toast, { Toast, Toaster } from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import PayButton from "@/components/paywithFlutterWave";
+
 
 
 
@@ -238,7 +240,8 @@ function Courses(){
 
 
                                 <div>
-                                    <button className="bg-myprimaryColor text-black font-semibold rounded-lg px-5 py-3" onClick={()=>handleEnroll(selectedCourse)}>Enroll Now</button>
+                                    {/* <button className="bg-myprimaryColor text-black font-semibold rounded-lg px-5 py-3" onClick={()=>handleEnroll(selectedCourse)}>Enroll Now</button> */}
+                                    <PayButton course={selectedCourse} />
                                 </div>
 
                             </div>
