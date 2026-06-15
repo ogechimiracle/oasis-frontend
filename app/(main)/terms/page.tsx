@@ -11,7 +11,7 @@ function TermsConditions(){
         <div className="px-5 lg:px-15 mt-10 mb-10">
           <div className="flex flex-col w-full gap-y-8 lg:px-10 ">
             {termsAndConditions.sections.map((items, index) => (
-              <div className="flex items-start " key={index}>
+              <div className="flex flex-col lg:flex-row items-start " key={index}>
                 <div className="w-full lg:w-[30%]">
                   <p className="font-semibold text-xl text-black leading-10">
                     {items.title}
