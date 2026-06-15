@@ -50,8 +50,8 @@ function Footer(){
 
                 <div className="flex items-center gap-x-4 text-gray-400 font-light justify-center">
                     <Link href="">Careers</Link>
-                    <Link href="">Privacy Policy</Link>
-                    <Link href="">Terms & Condition</Link>
+                    <Link href="/privacy">Privacy Policy</Link>
+                    <Link href="/terms">Terms & Condition</Link>
                 </div>
 
                 <div className="flex items-center justify-center">

@@ -11,6 +11,7 @@ import 'aos/dist/aos.css';
 
 
 
+
 function About(){
     useEffect(() => {
         AOS.init({
@@ -160,7 +161,7 @@ function About(){
                     <p className="text-4xl font-bold text-myheroColor">Join Us Now</p>
                     <p className="text-gray-700 font-semibold">@ Integrated OASIS</p>
 
-                    <button className="px-8 py-2.5 text-xl rounded-full mt-5 border-2 border-myheroColor cursor-pointer text-myheroColor hover:bg-myheroColor hover:text-white transition-colors duration-300" data-aos="zoom-in" data-aos-delay="200">Register</button>
+                    <Link href="/auth" className="px-8 py-2.5 text-xl rounded-full mt-5 border-2 border-myheroColor cursor-pointer text-myheroColor hover:bg-myheroColor hover:text-white transition-colors duration-300" data-aos="zoom-in" data-aos-delay="200">Register</Link>
                 </div>
             </div>
 

@@ -7,6 +7,8 @@ import { useEffect } from "react";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import HeroSwiper from "./heroSlider";
+import Link from "next/link";
+
 
 
 
@@ -33,11 +35,11 @@ function Hero(){
                         </div>
 
                         <div className="flex  flex-col lg:flex-row items-center gap-x-8 mt-8 gap-y-4" data-aos="fade-up" data-aos-delay="600">
-                            <button className="bg-myprimaryColor shadow-xs cursor-pointer text-black text-md font-poppins px-5 py-3 rounded-full hover:scale-105 transition-transform duration-300">Join for free</button>
+                            <Link href="/auth" className="bg-myprimaryColor shadow-xs cursor-pointer text-black text-md font-poppins px-5 py-3 rounded-full hover:scale-105 transition-transform duration-300">Join for free</Link>
 
-                            <button className="gap-x-5 cursor-pointer hover:translate-x-2 transition-transform duration-300 px-5 py-3 rounded-full border-2 border-white">
+                            <Link href="/courses" className="gap-x-5 cursor-pointer hover:translate-x-2 transition-transform duration-300 px-5 py-3 rounded-full border-2 border-white">
                                 <span className="text-md font-poppins text-white">Explore All Courses</span>
-                            </button>
+                            </Link>
                         </div>
 
                     </div>
