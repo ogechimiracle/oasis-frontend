@@ -33,7 +33,7 @@ export default function CourseSwiper({ courses }: CourseSwiperProps) {
         1024: { slidesPerView: 3 }, // 3 per row on desktop
       }}
     >
-      {courses.map((course,index) => (
+      {courses.slice(0,10).map((course,index) => (
         <SwiperSlide key={index}>
           <div className="bg-white rounded-2xl shadow-md overflow-hidden">
             <img
