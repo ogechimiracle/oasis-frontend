@@ -234,7 +234,7 @@ export default function Home() {
           data-aos-delay="200"
         >
           {pageLoading ? (
-            <div className="w-full">
+            <div className="w-full grid grid-cols-4 lg:grid-cols-5">
               {Array.from({ length: 5 }).map((_, index) => (
                 <CourseCardSkeleton key={index} />
               ))}
