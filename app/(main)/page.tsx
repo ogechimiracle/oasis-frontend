@@ -485,10 +485,10 @@ export default function Home() {
                     </div>
 
                     <div className="flex flex-col">
-                      <span className="font-semibold text-black">Level</span>
+                      {/* <span className="font-semibold text-black">Level</span>
                       <p className="text-sm text-gray-600">
                         {selectedCourse.level}
-                      </p>
+                      </p> */}
                     </div>
 
                     <div className="flex flex-col">

@@ -171,7 +171,7 @@ function Courses(){
                     id={course.id}
                     title={course.title}
                     category={course.category.name}
-                    level={course.level}
+                    
                     price={formatCurrency(course.cost)}
                     isPaid={course.paid}
                     description={truncateText(course.briefDefinition, 100)}
@@ -222,10 +222,7 @@ function Courses(){
                     </div>
 
                     <div className="flex flex-col">
-                      <span className="font-semibold text-black">Level</span>
-                      <p className="text-sm text-gray-600">
-                        {selectedCourse.level}
-                      </p>
+                     
                     </div>
 
                     <div className="flex flex-col">

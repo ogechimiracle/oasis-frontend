@@ -7,7 +7,7 @@ type CourseCardProps = {
     id:string,
   title: string;
   category: string;
-  level: "beginner" | "intermediate" | "advanced";
+  level?: "beginner" | "intermediate" | "advanced";
   price: any;
   description: string;
   isPaid: boolean;
