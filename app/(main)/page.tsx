@@ -234,8 +234,8 @@ export default function Home() {
           data-aos-delay="200"
         >
           {pageLoading ? (
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-x-5 gap-y-5">
-              {Array.from({ length: 4 }).map((_, index) => (
+            <div className="w-full">
+              {Array.from({ length: 5 }).map((_, index) => (
                 <CourseCardSkeleton key={index} />
               ))}
             </div>
@@ -246,15 +246,16 @@ export default function Home() {
                 id={course.id}
                 title={course.title}
                 category={course.category.name}
-              level={course.level}
-              price={formatCurrency(course.cost)}
-              isPaid={course.paid}
-              description={truncateText(course.briefDefinition, 100)}
-              image={course.thumbnail}
-              onGetCourseById={() => navigateToCourseDetails(course.id)}
+              
+                price={formatCurrency(course.cost)}
+                isPaid={course.paid}
+                description={truncateText(course.briefDefinition, 100)}
+                image={course.thumbnail}
+                onGetCourseById={() => navigateToCourseDetails(course.id)}
             />
           )))}
         </div>
+        
       </div>
 
       <div className="px-5 lg:px-15 mt-10">

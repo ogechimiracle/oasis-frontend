@@ -42,9 +42,7 @@ export default function CourseCard({
         />
 
         {/* Level Badge */}
-        <div className="absolute top-3 left-3">
-          <Badge className="capitalize">{level}</Badge>
-        </div>
+        
       </div>
 
       <CardContent className="p-4 space-y-2">
