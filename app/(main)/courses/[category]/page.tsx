@@ -1,7 +1,7 @@
 
 
 import { getCoursesByCategory, getCategoryBySlug } from "@/api/courseService";
-// Adjust import path to your layout
+
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";

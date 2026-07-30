@@ -3,7 +3,7 @@
 import { getCourseBySlug } from "@/api/courseService";
 import Link from "next/link";
 import Image from "next/image";
-import { notFound, useRouter } from "next/navigation";
+import { notFound} from "next/navigation";
 import { Metadata } from "next";
 import EnrollmentSection from "@/components/EnrolmentSection";
 
