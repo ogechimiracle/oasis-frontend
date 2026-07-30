@@ -77,7 +77,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           </h1>
 
           <p className="text-base md:text-lg text-gray-600 max-w-2xl">
-            {categoryData.description ??
+            {categoryData.name??
               `Explore our curated selection of top-rated ${categoryData.name} courses to build your skills.`}
           </p>
 
