@@ -5,6 +5,8 @@ import { AuthProvider } from "@/context/authContext";
 import "./globals.css";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import Script from "next/script";
+
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
@@ -148,9 +150,26 @@ export default function RootLayout({
   return (
     <html lang="en" className={cn("font-sans", geist.variable)}>
       <body className={` ${poppins.variable} antialiased`}>
-        <AuthProvider>
-        {children}
-        </AuthProvider>
+        <AuthProvider>{children}</AuthProvider>
+
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-PY1Z9FWYPV"
+          strategy="afterInteractive"
+        />
+
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag(){
+              dataLayer.push(arguments);
+            }
+
+            gtag('js', new Date());
+
+            gtag('config', 'G-PY1Z9FWYPV');
+          `}
+        </Script>
       </body>
     </html>
   );
