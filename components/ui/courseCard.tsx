@@ -1,3 +1,4 @@
+'use client'
 
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
@@ -10,7 +11,7 @@ type CourseCardProps = {
   level?: "beginner" | "intermediate" | "advanced";
   price: any;
   description: string;
-  isPaid: boolean;
+  isPaid?: boolean;
   image: string;
   onGetCourseById?: (id: string) => void;
 };
@@ -62,7 +63,7 @@ export default function CourseCard({
         {/* Price */}
         <div className="flex items-center justify-between pt-2">
           <span className="text-md font-bold">
-            {isPaid ? `₦${price}` : "Free"}
+            {isPaid ? `₦${price}` : ""}
           </span>
 
           <button className="text-sm px-3 py-1 rounded-lg bg-black text-white hover:bg-gray-800 transition" onClick={()=>onGetCourseById?.(id)}>
