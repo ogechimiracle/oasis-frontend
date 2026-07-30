@@ -124,7 +124,8 @@ function Nav() {
                             -translate-x-1/2
                             top-full
                             mt-3
-                            w-64
+                            w-110
+                            h-80 overflow-y-scroll
                             bg-white
                             rounded-xl
                             shadow-xl
