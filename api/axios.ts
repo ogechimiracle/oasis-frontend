@@ -3,7 +3,7 @@ import axios from "axios"
 
 const api = axios.create({
       // baseURL: "http://localhost:5000/api",
-     baseURL: "https://api.oasisintech.com/api", 
+     baseURL: "http://api.oasisintech.com/api", 
     //  baseURL: "https://oasis-backend-hqcx.onrender.com/api"
 });
 
