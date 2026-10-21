@@ -13,7 +13,7 @@ import { useState, useEffect } from "react";
 import { getAllCourses, getCourseById } from "@/api/userService";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import CourseCard from "@/components/ui/courseCard1";
+import CourseCard from "@/components/ui/courseCard";
 import { formatCurrency, truncateText } from "@/lib/helper";
 
 import {Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet";
