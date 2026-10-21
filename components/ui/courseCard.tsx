@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
@@ -28,9 +28,9 @@ export default function CourseCard({
   onGetCourseById,
 }: CourseCardProps) {
   // Safely parse numeric price for calculation
-  const numericPrice =
-    typeof price === "string"
-      ? parseFloat(price.replace(/[^0-9.]/g, ""))
+  const numericPrice = 
+    typeof price === "string" 
+      ? parseFloat(price.replace(/[^0-9.]/g, "")) 
       : Number(price);
 
   const hasNumericPrice = !isNaN(numericPrice) && numericPrice > 0;
@@ -63,9 +63,13 @@ export default function CourseCard({
         <p className="text-sm text-gray-500">{category}</p>
 
         {/* Title */}
-        <h3 className="text-lg font-semibold line-clamp-2">{title}</h3>
+        <h3 className="text-lg font-semibold line-clamp-2">
+          {title}
+        </h3>
 
-        <div className="text-sm text-gray-600 line-clamp-3">{description}</div>
+        <div className="text-sm text-gray-600 line-clamp-3">
+          {description}
+        </div>
 
         {/* Price & Discount Section */}
         <div className="flex items-center justify-between pt-2">
@@ -86,8 +90,8 @@ export default function CourseCard({
             )}
           </div>
 
-          <button
-            className="text-sm px-3 py-1 rounded-lg bg-black text-white hover:bg-gray-800 transition"
+          <button 
+            className="text-sm px-3 py-1 rounded-lg bg-black text-white hover:bg-gray-800 transition" 
             onClick={() => onGetCourseById?.(id)}
           >
             View details
