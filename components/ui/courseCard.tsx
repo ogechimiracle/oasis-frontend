@@ -27,21 +27,14 @@ export default function CourseCard({
   image,
   onGetCourseById,
 }: CourseCardProps) {
-  console.log("CourseCard image prop:", image);
-
-  // Parse numeric price safely
+  // Safely parse numeric price for calculation
   const numericPrice =
     typeof price === "string"
       ? parseFloat(price.replace(/[^0-9.]/g, ""))
       : Number(price);
 
-  // Discount applies to all paid courses (no threshold)
-  const hasDiscount = isPaid && !isNaN(numericPrice);
-
-  // Calculate 40% discounted price (paying 60% of original price)
-  const discountedPrice = hasDiscount
-    ? Math.round(numericPrice * 0.6)
-    : numericPrice;
+  const hasNumericPrice = !isNaN(numericPrice) && numericPrice > 0;
+  const discountedPrice = hasNumericPrice ? Math.round(numericPrice * 0.6) : 0;
 
   return (
     <Card className="rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer">
@@ -57,16 +50,12 @@ export default function CourseCard({
           }}
         />
 
-        {/* Professional 40% Discount Badge */}
-        {hasDiscount && (
-          <div className="absolute top-3 right-3 z-10">
-            <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-extrabold bg-rose-600 text-white shadow-md tracking-wide">
-              40% OFF
-            </span>
-          </div>
-        )}
-
-        {/* Level Badge */}
+        {/* Unconditional 40% Discount Badge */}
+        <div className="absolute top-3 right-3 z-10">
+          <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-extrabold bg-rose-600 text-white shadow-md tracking-wide">
+            40% OFF
+          </span>
+        </div>
       </div>
 
       <CardContent className="p-4 space-y-2">
@@ -81,22 +70,20 @@ export default function CourseCard({
         {/* Price & Discount Section */}
         <div className="flex items-center justify-between pt-2">
           <div className="flex items-center gap-2">
-            {isPaid ? (
-              hasDiscount ? (
-                <div className="flex items-baseline gap-2">
-                  <span className="text-md font-bold text-slate-900">
-                    ₦{discountedPrice.toLocaleString()}
-                  </span>
-                  <span className="text-xs text-gray-400 line-through">
-                    ₦{numericPrice.toLocaleString()}
-                  </span>
-                </div>
-              ) : (
-                <span className="text-md font-bold">
+            {hasNumericPrice ? (
+              <div className="flex items-baseline gap-2">
+                <span className="text-md font-bold text-slate-900">
+                  ₦{discountedPrice.toLocaleString()}
+                </span>
+                <span className="text-xs text-gray-400 line-through">
                   ₦{numericPrice.toLocaleString()}
                 </span>
-              )
-            ) : null}
+              </div>
+            ) : (
+              <span className="text-md font-bold">
+                {price ? `₦${price}` : "Free"}
+              </span>
+            )}
           </div>
 
           <button
