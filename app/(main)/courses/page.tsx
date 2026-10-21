@@ -3,7 +3,7 @@
 import { getCategory } from "@/api/adminService";
 import { getCourseById, getAllCourses } from "@/api/userService";
 import Banner from "@/components/ui/banner";
-import CourseCard from "@/components/ui/courseCard1";
+import CourseCard from "@/components/ui/courseCard";
 import { formatCurrency, truncateText, filterCourses } from "@/lib/helper";
 import { useState, useEffect, useMemo } from "react";
 import {
