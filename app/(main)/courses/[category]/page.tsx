@@ -5,7 +5,7 @@ import { getCoursesByCategory, getCategoryBySlug } from "@/api/courseService";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
-import CourseCard from "@/components/ui/courseCard";
+import CourseCard from "@/components/ui/courseCard1";
 
 interface CategoryPageProps {
   params: Promise<{

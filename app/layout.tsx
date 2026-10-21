@@ -70,7 +70,10 @@ export const metadata: Metadata = {
     "Best Tech Institute in Owerri",
     "Coding School Owerri",
     "Programming School Imo State",
-    ""
+    "Top 5 Tech Training Centers in owerri",
+    "Top 10 Tech Training Centers in owerri",
+    "Learn Cyber Security in Owerri",
+    "where to learn Tech Skills in owerri"
   ],
 
   creator: "Integrated Oasis Institute of Technology",

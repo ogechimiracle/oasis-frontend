@@ -13,13 +13,15 @@ import { useState, useEffect } from "react";
 import { getAllCourses, getCourseById } from "@/api/userService";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import CourseCard from "@/components/ui/courseCard";
+import CourseCard from "@/components/ui/courseCard1";
 import { formatCurrency, truncateText } from "@/lib/helper";
 
 import {Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import PayButton from "@/components/paywithFlutterWave";
 import { useMediaQuery } from "usehooks-ts";
 import CourseCardSkeleton from "@/components/CourseCardSkeleton";
+
+import { DiscountModal } from "@/components/discountModal";
 
 
 
@@ -240,22 +242,23 @@ export default function Home() {
               ))}
             </div>
           ) : (
-            course.slice(0, 12).map((course: any, index: number) => (
-              <CourseCard
-                key={index}
-                id={course.id}
-                title={course.title}
-                category={course.category.name}
-              
-                price={formatCurrency(course.cost)}
-                isPaid={course.paid}
-                description={truncateText(course.briefDefinition, 100)}
-                image={course.thumbnail}
-                onGetCourseById={() => navigateToCourseDetails(course.id)}
-            />
-          )))}
+            course
+              .slice(0, 12)
+              .map((course: any, index: number) => (
+                <CourseCard
+                  key={index}
+                  id={course.id}
+                  title={course.title}
+                  category={course.category.name}
+                  price={formatCurrency(course.cost)}
+                  isPaid={course.paid}
+                  description={truncateText(course.briefDefinition, 100)}
+                  image={course.thumbnail}
+                  onGetCourseById={() => navigateToCourseDetails(course.id)}
+                />
+              ))
+          )}
         </div>
-        
       </div>
 
       <div className="px-5 lg:px-15 mt-10">
@@ -589,6 +592,8 @@ export default function Home() {
           </div>
         </div>
       )}
+
+      <DiscountModal debugMode={true} scrollThreshold={25} />
     </div>
   );
 }
